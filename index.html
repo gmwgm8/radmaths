@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>RadMath - Free Radiation & Nuclear Physics Calculator</title>
+    <meta
+      name="title"
+      content="RadMath - Free Radiation & Nuclear Physics Calculator"
+    />
+    <meta
+      name="description"
+      content="Professional radiation calculator for health physicists and radiation safety officers. Calculate radioactive decay, dose rates, activity conversions, gamma shielding, and more. Free online tool."
+    />
+    <meta
+      name="keywords"
+      content="radiation calculator, health physics, radioactive decay, dose rate calculator, activity conversion, gamma shielding, nuclear calculations, radiation safety, becquerel to curie, sievert to rem, radiation protection, radmath"
+    />
+    <meta name="author" content="RadMath" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://radmaths.com/" />
+    <meta
+      property="og:title"
+      content="RadMath - Free Radiation & Nuclear Physics Calculator"
+    />
+    <meta
+      property="og:description"
+      content="Professional radiation calculator for health physicists. Calculate decay, dose rates, conversions, and shielding. Free online tool."
+    />
+    <meta property="og:image" content="https://radmaths.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://radmaths.com/" />
+    <meta
+      property="twitter:title"
+      content="RadMath - Free Radiation & Nuclear Physics Calculator"
+    />
+    <meta
+      property="twitter:description"
+      content="Professional radiation calculator for health physicists. Calculate decay, dose rates, conversions, and shielding. Free online tool."
+    />
+    <meta
+      property="twitter:image"
+      content="https://radmaths.com/twitter-image.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://radmaths.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "RadMath",
+        "description": "Professional radiation calculator for health physicists and radiation safety officers. Calculate radioactive decay, dose rates, activity conversions, and gamma shielding.",
+        "url": "https://radmaths.com/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Radioactive Decay Calculator",
+          "Activity Unit Conversions",
+          "Dose Unit Conversions",
+          "Gamma Dose Rate Calculator",
+          "Shielding Calculator"
+        ],
+        "keywords": "radiation calculator, health physics, radioactive decay, dose rate, nuclear calculations, radmath"
+      }
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">☢️</div>
+        <h1>RadMath</h1>
+        <p class="subtitle">
+          Professional nuclear calculations and conversions
+        </p>
+      </header>
+
+      <div class="calculator-card">
+        <div class="calc-selector">
+          <label for="calcType">Select Calculation Type</label>
+          <select id="calcType">
+            <option value="">Choose a calculation...</option>
+            <option value="decay">Radioactive Decay</option>
+            <option value="activity">Activity Conversions</option>
+            <option value="dose">Dose Conversions</option>
+            <option value="gamma">Gamma Dose Rate</option>
+            <option value="shielding">Shielding Calculator</option>
+          </select>
+        </div>
+
+        <!-- Radioactive Decay Calculator -->
+        <div id="decay-calc" class="calc-options">
+          <div class="input-field">
+            <label>Select Isotope</label>
+            <select id="isotope">
+              <option value="">Choose isotope...</option>
+              <option value="8.02,days">Iodine-131 (8.02 days)</option>
+              <option value="30.17,years">Cesium-137 (30.17 years)</option>
+              <option value="5730,years">Carbon-14 (5,730 years)</option>
+              <option value="24110,years">Plutonium-239 (24,110 years)</option>
+              <option value="432.2,years">Americium-241 (432.2 years)</option>
+              <option value="28.8,years">Strontium-90 (28.8 years)</option>
+              <option value="1600,years">Radium-226 (1,600 years)</option>
+              <option value="12.3,years">Tritium (12.3 years)</option>
+              <option value="0.379,years">Polonium-210 (138 days)</option>
+              <option value="5.27,years">Cobalt-60 (5.27 years)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <label>Initial Activity</label>
+              <input
+                type="number"
+                id="initialActivity"
+                placeholder="Enter value"
+              />
+            </div>
+            <div class="input-field">
+              <label>Units</label>
+              <select id="activityUnit">
+                <option value="Ci">Curies (Ci)</option>
+                <option value="mCi">Millicuries (mCi)</option>
+                <option value="μCi">Microcuries (μCi)</option>
+                <option value="Bq">Becquerels (Bq)</option>
+                <option value="MBq">Megabecquerels (MBq)</option>
+                <option value="GBq">Gigabecquerels (GBq)</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-field">
+            <label>Time Elapsed</label>
+            <input type="number" id="timeElapsed" placeholder="Enter time" />
+          </div>
+          <div class="input-field">
+            <label>Time Units</label>
+            <select id="timeUnit">
+              <option value="seconds">Seconds</option>
+              <option value="minutes">Minutes</option>
+              <option value="hours">Hours</option>
+              <option value="days">Days</option>
+              <option value="years">Years</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Activity Conversions Calculator -->
+        <div id="activity-calc" class="calc-options">
+          <div class="input-group">
+            <div class="input-field">
+              <label>From</label>
+              <input
+                type="number"
+                id="activityFrom"
+                placeholder="Enter value"
+              />
+            </div>
+            <div class="input-field">
+              <label>Unit</label>
+              <select id="activityFromUnit">
+                <option value="Bq">Becquerels (Bq)</option>
+                <option value="kBq">Kilobecquerels (kBq)</option>
+                <option value="MBq">Megabecquerels (MBq)</option>
+                <option value="GBq">Gigabecquerels (GBq)</option>
+                <option value="Ci">Curies (Ci)</option>
+                <option value="mCi">Millicuries (mCi)</option>
+                <option value="μCi">Microcuries (μCi)</option>
+                <option value="nCi">Nanocuries (nCi)</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-field">
+            <label>To</label>
+            <select id="activityToUnit">
+              <option value="Bq">Becquerels (Bq)</option>
+              <option value="kBq">Kilobecquerels (kBq)</option>
+              <option value="MBq">Megabecquerels (MBq)</option>
+              <option value="GBq">Gigabecquerels (GBq)</option>
+              <option value="Ci">Curies (Ci)</option>
+              <option value="mCi">Millicuries (mCi)</option>
+              <option value="μCi">Microcuries (μCi)</option>
+              <option value="nCi">Nanocuries (nCi)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dose Conversions Calculator -->
+        <div id="dose-calc" class="calc-options">
+          <div class="input-group">
+            <div class="input-field">
+              <label>From</label>
+              <input type="number" id="doseFrom" placeholder="Enter value" />
+            </div>
+            <div class="input-field">
+              <label>Unit</label>
+              <select id="doseFromUnit">
+                <option value="Sv">Sieverts (Sv)</option>
+                <option value="mSv">Millisieverts (mSv)</option>
+                <option value="μSv">Microsieverts (μSv)</option>
+                <option value="rem">Rem</option>
+                <option value="mrem">Millirem (mrem)</option>
+                <option value="Gy">Gray (Gy)</option>
+                <option value="mGy">Milligray (mGy)</option>
+                <option value="rad">Rad</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-field">
+            <label>To</label>
+            <select id="doseToUnit">
+              <option value="Sv">Sieverts (Sv)</option>
+              <option value="mSv">Millisieverts (mSv)</option>
+              <option value="μSv">Microsieverts (μSv)</option>
+              <option value="rem">Rem</option>
+              <option value="mrem">Millirem (mrem)</option>
+              <option value="Gy">Gray (Gy)</option>
+              <option value="mGy">Milligray (mGy)</option>
+              <option value="rad">Rad</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Gamma Dose Rate Calculator -->
+        <div id="gamma-calc" class="calc-options">
+          <div class="input-field">
+            <label>Select Isotope</label>
+            <select id="gammaIsotope">
+              <option value="">Choose isotope...</option>
+              <option value="0.33">Cesium-137 (0.33 R·m²/Ci·hr)</option>
+              <option value="0.20">Iodine-131 (0.20 R·m²/Ci·hr)</option>
+              <option value="1.32">Cobalt-60 (1.32 R·m²/Ci·hr)</option>
+              <option value="0.84">Radium-226 (0.84 R·m²/Ci·hr)</option>
+              <option value="0.03">Americium-241 (0.03 R·m²/Ci·hr)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <label>Activity</label>
+              <input
+                type="number"
+                id="gammaActivity"
+                placeholder="Enter activity"
+              />
+            </div>
+            <div class="input-field">
+              <label>Units</label>
+              <select id="gammaActivityUnit">
+                <option value="Ci">Curies (Ci)</option>
+                <option value="mCi">Millicuries (mCi)</option>
+                <option value="GBq">Gigabecquerels (GBq)</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <label>Distance</label>
+              <input
+                type="number"
+                id="gammaDistance"
+                placeholder="Enter distance"
+              />
+            </div>
+            <div class="input-field">
+              <label>Units</label>
+              <select id="gammaDistanceUnit">
+                <option value="m">Meters (m)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="ft">Feet (ft)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shielding Calculator -->
+        <div id="shielding-calc" class="calc-options">
+          <div class="input-field">
+            <label>Initial Dose Rate (mR/hr)</label>
+            <input
+              type="number"
+              id="initialDose"
+              placeholder="Enter dose rate"
+            />
+          </div>
+          <div class="input-field">
+            <label>Shield Material</label>
+            <select id="shieldMaterial">
+              <option value="11.0">Lead</option>
+              <option value="7.8">Steel</option>
+              <option value="2.3">Concrete</option>
+              <option value="18.9">Tungsten</option>
+              <option value="2.7">Aluminum</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label>Shield Thickness (cm)</label>
+            <input
+              type="number"
+              id="shieldThickness"
+              placeholder="Enter thickness"
+            />
+          </div>
+          <div class="input-field">
+            <label>Gamma Energy (MeV)</label>
+            <input
+              type="number"
+              id="gammaEnergy"
+              placeholder="0.662 for Cs-137"
+              value="0.662"
+            />
+          </div>
+        </div>
+
+        <button class="convert-btn" onclick="calculate()">⚡</button>
+
+        <div class="result-section">
+          <div class="result-label">Result</div>
+          <div class="result-value" id="result">Select a calculation type</div>
+        </div>
+
+        <p class="info-text">
+          Professional radiation calculations for health physics
+        </p>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
