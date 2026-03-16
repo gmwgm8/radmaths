@@ -56,10 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function setRandomBackground() {
   const backgroundImages = [
     "https://scx2.b-cdn.net/gfx/news/hires/2022/nuclear-reactor.jpg",
-    // Add 4 more image URLs here when you have them
-    // 'https://example.com/image2.jpg',
-    // 'https://example.com/image3.jpg',
-    // 'https://example.com/image4.jpg',
+    "https://imgix.bustle.com/inverse/1e/bf/42/7e/d2af/4bbb/9553/91fa350281aa.jpeg?w=825&h=550&fit=crop&crop=faces",
+    "https://imgix.bustle.com/inverse/0b/b5/23/53/480d/4b3e/b41c/fb68ca6d52b9/the-remnants-of-an-abandoned-classroom-in-a-pre-school-in-pripyat.jpeg?w=825&h=551&fit=crop&crop=faces",
+    "https://images.unsplash.com/photo-1772376920750-dac1470b1bad?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_1080,h_540,g_auto/dpr_auto/f_auto/q_auto:eco/v1/tdih-a-bomb-testing-gettyimages-3091730?_a=BAVAZGB00",
+    "https://nsarchive.gwu.edu/sites/default/files/thumbnails/image/16.jpg",
     // 'https://example.com/image5.jpg'
   ];
 
