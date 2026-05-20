@@ -61,7 +61,6 @@ function setRandomBackground() {
     "https://images.unsplash.com/photo-1772376920750-dac1470b1bad?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_1080,h_540,g_auto/dpr_auto/f_auto/q_auto:eco/v1/tdih-a-bomb-testing-gettyimages-3091730?_a=BAVAZGB00",
     "https://nsarchive.gwu.edu/sites/default/files/thumbnails/image/16.jpg",
-    // 'https://example.com/image5.jpg'
   ];
 
   const randomIndex = Math.floor(Math.random() * backgroundImages.length);
@@ -339,26 +338,37 @@ function calculateDecay() {
     throw new Error("Missing values");
   }
 
-  // Parse time in HH:MM or HHH:MM format (no hour limit)
-  const parseTime = (timeStr) => {
-    const parts = timeStr.split(":");
-    if (parts.length !== 2) throw new Error("Invalid time format. Use HH:MM");
-    const hours = parseInt(parts[0]);
-    const minutes = parseInt(parts[1]);
-    if (
-      isNaN(hours) ||
-      isNaN(minutes) ||
-      hours < 0 ||
-      minutes < 0 ||
-      minutes > 59
-    ) {
-      throw new Error("Invalid time format");
+  // Parse datetime in MM/DD/YYYY HH:MM format
+  const parseDateTime = (dateTimeStr) => {
+    // Expected format: MM/DD/YYYY HH:MM
+    const regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,3}):(\d{2})$/;
+    const match = dateTimeStr.match(regex);
+    
+    if (!match) {
+      throw new Error("Invalid format. Use MM/DD/YYYY HH:MM");
     }
-    return hours * 3600 + minutes * 60; // Convert to seconds
+    
+    const month = parseInt(match[1]);
+    const day = parseInt(match[2]);
+    const year = parseInt(match[3]);
+    const hours = parseInt(match[4]);
+    const minutes = parseInt(match[5]);
+    
+    // Validate ranges
+    if (month < 1 || month > 12 || day < 1 || day > 31 || 
+        hours < 0 || minutes < 0 || minutes > 59) {
+      throw new Error("Invalid date/time values");
+    }
+    
+    // Create Date object (month is 0-indexed in JavaScript Date)
+    const date = new Date(year, month - 1, day, hours, minutes, 0);
+    
+    // Return timestamp in milliseconds, then convert to seconds
+    return date.getTime() / 1000;
   };
 
-  const t1Seconds = parseTime(time1);
-  const t2Seconds = parseTime(time2);
+  const t1Seconds = parseDateTime(time1);
+  const t2Seconds = parseDateTime(time2);
   const timeSeconds = Math.abs(t2Seconds - t1Seconds);
 
   const hlSeconds = convertToSeconds(halfLife, hlUnit);
